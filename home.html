@@ -52,7 +52,53 @@
 
   
 <script>
-  
+  const quizData = [
+    {
+        question: "What is HTML?",
+        options: ["Programming Language", "Markup Language", "Database", "OS"],
+        correct: 1
+    },
+    {
+        question: "Which is JS framework?",
+        options: ["Django", "React", "Laravel", "Spring"],
+        correct: 1
+    },
+    {
+        question: "CSS stands for?",
+        options: ["Color Style Sheet", "Cascading Style Sheet", "Computer Style Sheet", "Creative Style Sheet"],
+        correct: 1
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion() {
+    let q = quizData[currentQuestion];
+    document.getElementById("question").innerText = q.question;
+
+    let buttons = document.getElementsByClassName("btn");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].innerText = q.options[i];
+    }
+}
+
+function checkAnswer(index) {
+    if (index === quizData[currentQuestion].correct) {
+        score++;
+    }
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
+    } else {
+        document.body.innerHTML = `<h2>Your Score: ${score}</h2>`;
+    }
+}
+
+loadQuestion();
 </script>
 </body>
 </html>
