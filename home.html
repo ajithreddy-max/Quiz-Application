@@ -99,6 +99,11 @@ function nextQuestion() {
 }
 
 loadQuestion();
+    let time = 10;
+setInterval(() => {
+    time--;
+    document.getElementById("timer").innerText = time;
+}, 1000);
 </script>
 </body>
 </html>
